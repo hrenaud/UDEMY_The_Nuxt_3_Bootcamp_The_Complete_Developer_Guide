@@ -1,18 +1,24 @@
 <script setup>
+import heartOutline from '../../assets/heartOutline.png';
+import heartFiled from '../../assets/heartFilled.png';
 const props = defineProps({
-  car: {
-    type: Object,
-    required: true,
-  },
+  car: Object,
+  favored: Boolean,
 });
+
+const emit = defineEmits(['favor']);
 </script>
 <template>
   <div
-    class="shadow border w-full overflow-hidden mb-5 cursor-pointer h-[200px]"
-    @click="navigateTo(`/car/${car.name}-${car.id}`)"
+    class="shadow relative border w-full overflow-hidden mb-5 cursor-pointer h-[200px]"
   >
-    <div class="flex h-full">
-      <img :src="car.url" alt="" class="w-[300px] h-full" />
+    <img
+      class="absolute w-7 right-5 top-2 z-20"
+      :src="favored ? heartFiled : heartOutline"
+      @click="emit('favor', car.id)"
+    />
+    <div class="flex h-full" @click="navigateTo(`/car/${car.name}-${car.id}`)">
+      <NuxtImg format="webp" :src="car.url" alt="" class="w-[300px] h-full" />
       <div class="p-4 flex flex-col">
         <div>
           <h1 class="text-2xl text-blue-700">{{ car.name }}</h1>
