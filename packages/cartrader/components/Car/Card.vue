@@ -1,8 +1,11 @@
 <script setup>
-import heartOutline from '../../assets/heartOutline.png';
-import heartFiled from '../../assets/heartFilled.png';
+import heartOutline from '~~/assets/heartOutline.png';
+import heartFiled from '~~/assets/heartFilled.png';
 const props = defineProps({
-  car: Object,
+  car: {
+    type: Object,
+    required: true,
+  },
   favored: Boolean,
 });
 

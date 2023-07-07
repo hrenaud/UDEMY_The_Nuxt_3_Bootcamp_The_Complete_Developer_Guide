@@ -6,7 +6,7 @@ const searchHandler = () => {
     cityError.value = true;
     return;
   }
-  navigateTo(`/city/${city.value}/car`);
+  navigateTo(`/city/${city.value}/car?minPrice=0&maxPrice=1000000`);
 };
 </script>
 <template>
