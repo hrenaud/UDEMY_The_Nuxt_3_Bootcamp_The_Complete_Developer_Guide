@@ -1,6 +1,7 @@
 <script setup>
 definePageMeta({
   layout: 'custom',
+  middleware: ['auth'],
 });
 const { makes } = useCars();
 
@@ -88,6 +89,5 @@ const inputs = [
       />
       <CarAdImage @change-input="onChangeInput" />
     </div>
-    {{ info }}
   </div>
 </template>
