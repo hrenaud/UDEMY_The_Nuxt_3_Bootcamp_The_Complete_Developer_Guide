@@ -23,8 +23,8 @@ const handleFavorite = (id) => {
         v-for="car in cars"
         :key="car.id"
         :car="car"
-        @favor="handleFavorite"
         :favored="car.id in favorite"
+        @favor="handleFavorite"
       />
     </ClientOnly>
   </div>

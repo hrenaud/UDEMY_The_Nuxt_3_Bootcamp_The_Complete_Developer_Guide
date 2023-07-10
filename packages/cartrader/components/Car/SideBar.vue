@@ -74,15 +74,15 @@ const onChangePrice = () => {
     <!-- LOCATION START -->
     <div class="p-5 flex justify-between relative cursor-pointer border-b">
       <h3>Location</h3>
-      <h3 @click="updateModal(`location`)" class="text-blue-400 capitalize">
+      <h3 class="text-blue-400 capitalize" @click="updateModal(`location`)">
         {{ route.params.city }}
       </h3>
       <div
-        class="absolute border shadow left-56 p-5 top-1 -m-1 bg-white flex flex-col gap-4"
         v-if="modal.location"
+        class="absolute border shadow left-56 p-5 top-1 -m-1 bg-white flex flex-col gap-4"
       >
-        <input type="text" class="border p-1 rounded" v-model="city" />
-        <Button @click="onChangeLocation" label="Apply" />
+        <input v-model="city" type="text" class="border p-1 rounded" />
+        <Button @click="onChangeLocation">Apply</Button>
       </div>
     </div>
     <!-- LOCATION END -->
@@ -90,7 +90,7 @@ const onChangePrice = () => {
     <!-- MAKE START -->
     <div class="p-5 flex justify-between relative cursor-pointer border-b">
       <h3>Make</h3>
-      <h3 @click="updateModal(`make`)" class="text-blue-400 capitalize">
+      <h3 class="text-blue-400 capitalize" @click="updateModal(`make`)">
         {{ route.params.make || `Any` }}
       </h3>
       <div
@@ -98,10 +98,10 @@ const onChangePrice = () => {
         v-if="modal.make"
       >
         <h4
-          @click="onChangeMake(make)"
           v-for="make in makes"
           :key="make"
           class="w-1/3"
+          @click="onChangeMake(make)"
         >
           {{ make }}
         </h4>
@@ -112,28 +112,28 @@ const onChangePrice = () => {
     <div class="p-5 flex justify-between relative cursor-pointer border-b">
       <h3>Price</h3>
       <h3
-        @click="updateModal(`price`)"
         class="text-blue-400 capitalize whitespace-nowrap"
+        @click="updateModal(`price`)"
       >
         {{ priceRangeText }}
       </h3>
       <div
-        class="absolute border shadow left-56 p-5 top-1 -m-1 bg-white gap-4 flex justify-between flex-wrap"
         v-if="modal.price"
+        class="absolute border shadow left-56 p-5 top-1 -m-1 bg-white gap-4 flex justify-between flex-wrap"
       >
         <input
+          v-model="priceRange.min"
           type="number"
           placeholder="Min"
-          v-model="priceRange.min"
           class="border p-1 rounded"
         />
         <input
+          v-model="priceRange.max"
           type="number"
           placeholder="Max"
-          v-model="priceRange.max"
           class="border p-1 rounded"
         />
-        <Button @click="onChangePrice" label="Apply" />
+        <Button @click="onChangePrice">Apply</Button>
       </div>
     </div>
   </div>
