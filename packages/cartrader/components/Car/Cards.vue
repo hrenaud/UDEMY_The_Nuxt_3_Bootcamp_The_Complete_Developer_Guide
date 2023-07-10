@@ -1,5 +1,5 @@
 <script setup>
-const { cars } = useCars();
+const props = defineProps({ cars: Array });
 
 const favorite = useLocalStorage('favorite', {});
 
@@ -20,7 +20,7 @@ const handleFavorite = (id) => {
     <!-- Use ClientOnly or rename Cards.vue to Cards.client.vue -->
     <ClientOnly>
       <CarCard
-        v-for="car in cars"
+        v-for="car in props.cars"
         :key="car.id"
         :car="car"
         :favored="car.id in favorite"
